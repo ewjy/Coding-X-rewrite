@@ -84,7 +84,7 @@ def getNext(url):
 def DrawPie(font, labels_list, percent_list, title):				#labels_list: 圓餅圖的字    #percent_list: 圓餅圖各項的比例
 	labels, sizes = [], []											
 	plt.title(title, fontproperties = font)
-	for i in range(datazise):
+	for i in range(datasize):
 		labels.append(str(labels_list[i]))
 		sizes.append(str(percent_list[i]))
 	colors = cm.rainbow(np.arange(len(sizes))/len(sizes))
@@ -114,11 +114,11 @@ if __name__ == '__main__':
 	p_weight, n_weight, b_weight = 1, 0.5, -1 							#推、箭頭、噓文加權的比重
 
 	############################################################
-	datazise = eval(input("請輸入欲分析的詞彙個數  :  ")) 				
+	datasize = eval(input("請輸入欲分析的詞彙個數  :  ")) 				
 	############################################################
 	urls = []
 	semantic_list = []			#存放輸入的關鍵字
-	for i in range(datazise):											
+	for i in range(datasize):											
 		semantic_in = input("請輸入第"+str(i+1)+"個關鍵字  :  ")			#改變你想要找的關鍵字
 		semantic_list.append(semantic_in)
 	############################################################
@@ -143,7 +143,7 @@ if __name__ == '__main__':
 	sem_p, sem_n, sem_b = [], [], []	#關鍵字出現之文章其推噓文總數 p:推 n:箭頭 b:噓
 	p, n, b = 0, 0, 0
 	p_sum, n_sum, b_sum = 0, 0, 0
-	for i in range(datazise):														
+	for i in range(datasize):														
 		sem_count = 0
 		count = 0
 		for index in articles:
@@ -164,7 +164,7 @@ if __name__ == '__main__':
 	sum_all = sum(sum_sem_list)
 	percent_list = []						#關鍵字佔比
 	#計算單一詞彙佔全部字彙的百分比
-	for i in range(datazise):
+	for i in range(datasize):
 		if sum_all != 0:
 			percent_list.append(round((sum_sem_list[i]*100)/sum_all,2))
 		else:
@@ -173,14 +173,14 @@ if __name__ == '__main__':
 	############################################################
 	#把正向詞彙以及負向詞彙進行分類準備繪圖
 pnb_list = []
-for i in range(datazise):
+for i in range(datasize):
     bar_pnb = (sum_sem_list[i], sem_p[i], sem_n[i], sem_b[i])
     pnb_list.append(bar_pnb)
 
 print('\r\r')
 	############################################################
 print("總搜尋字彙出現個數為 : ", sum_all)
-for i in range(datazise):
+for i in range(datasize):
     print(semantic_list[i],"出現個數為:",sum_sem_list[i],"百分比為",percent_list[i],"%")
 
 	#######################################
