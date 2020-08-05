@@ -218,23 +218,5 @@ DrawPie(myfont, semantic_list, percent_list, title1)
 title2 = '關鍵字推文總數'
 plt.subplot(1,2,2)											#將圖表分割為2行2列，目前繪製的是第二格
 DrawBar(myfont, semantic_list, pnb_list, title2)
-'''	#長條圖
-	title3 = '總分數'
-	plt.subplot(2,2,3)
-	plt.title(title3 ,fontproperties = myfont)
-	y_pos = np.arange(2)
-	plt.xticks(y_pos, ('我的分數', '大家的分數'), fontproperties = myfont)
-	plt.bar(y_pos, (grade, general_grade), 0.5, alpha=.5)
-	#讀圖
-	title4 = '喜好結果'
-	plt.subplot(2,2,4)
-	if grade >= 0 and general_grade >= 0:
-		img = plt.imread('./same.jpg')							#cv2.imread('放要讀圖片路徑')
-	else:
-		img = plt.imread('./notsame.png')
-
-	plt.imshow(img)
-'''
-#plt.axis('off')
 plt.show()
 	#######################################
