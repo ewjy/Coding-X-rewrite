@@ -16,9 +16,7 @@ def Search_Board(): #搜尋板內關鍵字的函式
     res = requests.get(url_search)
 
     soup = BeautifulSoup(res.text, 'html.parser')
-    title_list = []
-    href_list = []
-    like_list = []
+    title_list, href_list, like_list = [], [], []
 
     for entry in soup.select('article a'):
         title_list.append(entry.text)
@@ -124,10 +122,6 @@ if __name__ == '__main__':
     print(name)
     print(sum_like)
     tmp_sum_like = []
-#    tmp_sum_like.append(sum_like[1])
-#    tmp_sum_like.append(sum_like[2])
-#    tmp_sum_like.append(sum_like[3])
-#    tmp_sum_like.append(sum_like[4])
     for i in range(1,5):
         tmp_sum_like.append(sum_like[i])
         print(title2)
