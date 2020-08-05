@@ -124,11 +124,13 @@ if __name__ == '__main__':
     print(name)
     print(sum_like)
     tmp_sum_like = []
-    tmp_sum_like.append(sum_like[1])
-    tmp_sum_like.append(sum_like[2])
-    tmp_sum_like.append(sum_like[3])
-    tmp_sum_like.append(sum_like[4])
-    print(title2)
+#    tmp_sum_like.append(sum_like[1])
+#    tmp_sum_like.append(sum_like[2])
+#    tmp_sum_like.append(sum_like[3])
+#    tmp_sum_like.append(sum_like[4])
+    for i in range(1,5):
+        tmp_sum_like.append(sum_like[i])
+        print(title2)
 
     # 直方圖
     xlabels = name[1:5]
