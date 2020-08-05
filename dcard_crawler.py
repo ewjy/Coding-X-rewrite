@@ -36,16 +36,22 @@ def DrawBar(x_list, y_list, title, font):
     plt.xticks(x_list,x_list)
     return
 
+
 if __name__ == '__main__':
 
     sum_like = [0]*5
+    # name = [0]*5
     name = ['cat','dog','mouse','bird']
     myfont = FontProperties(fname=r'C:\\python\\github\\Coding-X-rewrite\\GenYoGothicTW-Regular.ttf')
 
-    for i in range(0,4):
-        itle_list, href_list, like_list = Search_Board() # Search the board and get article titles and likes number of each article
+    
+
+
+    for i in range(1,5):
+        title_list, href_list, like_list = Search_Board() # Search the board and get article titles and likes number of each article
         sum_like[i] = sum(like_list)
         print (sum_like[i])
+
 
     ##############################################################################################################
     # Plot the like number of each article as histogram
@@ -72,16 +78,19 @@ if __name__ == '__main__':
             print('(' + str(like_list[i]) + ')', end = ' ')
             print(title_list[i], end = ' ')
             print('(' + href_list[i] + ')')
+
         plt.show() # Show the figure
     
-    # 四個板個別的總讚數
+    
     tmp_sum_like = []
     for i in range(0,4):
         tmp_sum_like.append(sum_like[i])
 
     # 直方圖
     xlabels = name[0:4]
-    plt.bar(xlabels,tmp_sum_like)
+    fig,ax = plt.subplots()
+    plt.bar(list(range(0,4)),tmp_sum_like)
+    plt.xticks(list(range(0,4)),xlabels)
     plt.show()
 
     # 圓餅圖
