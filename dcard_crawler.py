@@ -60,8 +60,8 @@ if __name__ == '__main__':
 
     sum_like = [0]*5
     # name = [0]*5
-    name = ['', 'cat','dog','mouse','bird']
-    myfont = FontProperties(fname=r'C:\\Users\\ruubi\\Desktop\\project\\crawler\\GenYoGothicTW-Regular.ttf')
+    name = ['cat','dog','mouse','bird']
+    myfont = FontProperties(fname=r'C:\\python\\github\\Coding-X-rewrite\\GenYoGothicTW-Regular.ttf')
 
     
 
@@ -118,20 +118,15 @@ if __name__ == '__main__':
         plt.show() # Show the figure
     
     
-    title2 = '讚數'
-    print(name)
-    print(sum_like)
     tmp_sum_like = []
-    for i in range(1,5):
+    for i in range(0,4):
         tmp_sum_like.append(sum_like[i])
-        print(title2)
 
     # 直方圖
-    xlabels = name[1:5]
-    print(xlabels)
+    xlabels = name[0:4]
     fig,ax = plt.subplots()
-    plt.bar(list(range(1,5)),tmp_sum_like)
-    plt.xticks(list(range(1,5)),xlabels)
+    plt.bar(list(range(0,4)),tmp_sum_like)
+    plt.xticks(list(range(0,4)),xlabels)
     plt.show()
 
     # 圓餅圖
