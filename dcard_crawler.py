@@ -59,12 +59,8 @@ def DrawBar(x_list, y_list, title, font):
 if __name__ == '__main__':
 
     sum_like = [0]*5
-    # name = [0]*5
     name = ['cat','dog','mouse','bird']
     myfont = FontProperties(fname=r'C:\\python\\github\\Coding-X-rewrite\\GenYoGothicTW-Regular.ttf')
-
-    
-
 
     for i in range(1,5):
         title_list, href_list, like_list = Search_Board() # Search the board and get article titles and likes number of each article
@@ -117,7 +113,7 @@ if __name__ == '__main__':
 
         plt.show() # Show the figure
     
-    
+    # 四個板個別的總讚數
     tmp_sum_like = []
     for i in range(0,4):
         tmp_sum_like.append(sum_like[i])
