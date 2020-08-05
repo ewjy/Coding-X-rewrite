@@ -91,7 +91,6 @@ def DrawPie(font, labels_list, percent_list, title):				#labels_list: 圓餅圖�
 	pictures,category_text,percent_text = plt.pie(sizes, labels=labels, colors=colors, autopct='%1.2f%%', shadow=True, startangle=140)
 	for i in category_text:
 		i.set_fontproperties(font)
-	#plt.legend(loc = "upper right", prop = font)
 	plt.axis('equal')
 
 ##################直方圖######################	
@@ -117,19 +116,14 @@ if __name__ == '__main__':
 	############################################################
 	datazise = eval(input("請輸入欲分析的詞彙個數  :  ")) 				
 	############################################################
-	#輸入關鍵字的喜好程度，代表最後加權的比重
 	urls = []
 	semantic_list = []			#存放輸入的關鍵字
-	#weight_list = []			#存每項關鍵字的權重
 	for i in range(datazise):											
 		semantic_in = input("請輸入第"+str(i+1)+"個關鍵字  :  ")			#改變你想要找的關鍵字
 		semantic_list.append(semantic_in)
-		#weight_in = eval(input("喜好程度為  :  "))				#改變你想要找的關鍵字
-		#weight_list.append(weight_in)
-		
 	############################################################
 	articles, push_tags = [], []		#articles: ptt文章所有內容   #push_tags: 推噓文資訊
-	for page in range(page_num):														#取得PTT頁面資訊
+	for page in range(page_num):										   #取得PTT頁面資訊
 		url_key = PTT_URL + Board + '/search?page=' + str(page+1) + '&q=' + Search		
 		url = url_key if KEY == 1 else PTT_URL if page == 0 else getNext(PTT_URL)
 		response = requests.get(url)
@@ -169,8 +163,6 @@ if __name__ == '__main__':
 	#將所有找尋到的字彙個數相加，計算總合
 	sum_all = sum(sum_sem_list)
 	percent_list = []						#關鍵字佔比
-
-	#sum_weight_list = []					#加權後的各關鍵字分數
 	#計算單一詞彙佔全部字彙的百分比
 	for i in range(datazise):
 		if sum_all != 0:
@@ -178,14 +170,6 @@ if __name__ == '__main__':
 		else:
 			percent_list.append(0)
 		
-		#sum_weight_list.append(sum_sem_list[i]*weight_list[i])
-
-'''	############################################################
-	#計算加權權重後總和
-	grade = sum(sum_weight_list)															#我的分數，以輸入權重為計算依據
-	general_grade = sum(sem_p)*p_weight + sum(sem_n)*n_weight - sum(sem_b)*b_weight			#客觀的分數，以推噓文的數量計算
-'''
-
 	############################################################
 	#把正向詞彙以及負向詞彙進行分類準備繪圖
 pnb_list = []
@@ -198,18 +182,11 @@ print('\r\r')
 print("總搜尋字彙出現個數為 : ", sum_all)
 for i in range(datazise):
     print(semantic_list[i],"出現個數為:",sum_sem_list[i],"百分比為",percent_list[i],"%")
-	############################################################
-'''
-	print('我的評分為:', grade, '大家的評分為:', general_grade)
-	if (general_grade >= 0 and grade >= 0) or (general_grade < 0 and grade < 0):
-		print("我的喜好和大家一樣")
-	else:
-		print("我的喜好和大家不同")
-'''
+
 	#######################################
 	#				將結果繪圖			  #
 	#######################################
-myfont = FontProperties(fname=r'./GenYoGothicTW-Regular.ttf')							#字型檔，r'裡面放你的字型檔案路徑'
+myfont = FontProperties(fname=r'./GenYoGothicTW-Regular.ttf')		#字型檔，r'裡面放你的字型檔案路徑'
 #圓餅圖	
 title1 = '關鍵字出現比例'
 plt.subplot(1,2,1)											#將圖表分割為2行2列，目前繪製的是第一格

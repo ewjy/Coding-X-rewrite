@@ -30,47 +30,22 @@ def Search_Board(): #搜尋板內關鍵字的函式
 
     return title_list[0:ARTICLE_NUM], href_list[0:ARTICLE_NUM], like_list[0:ARTICLE_NUM]
 
-def Get_Article(href):
-    res = requests.get(url + href)
-    soup = BeautifulSoup(res.text, 'html.parser')
-    comment_list = []
-
-    for entry in soup.select('article div'):
-        if entry.has_attr('class'):
-            item = re.search('sc-4ihej7-0',entry['class'][0])
-            if item is not None:
-                content = entry.text
-                break
-          
-    for entry in soup.select('div#comment-anchor div'):
-        if entry.has_attr('class'):
-            item = re.search('giORMG',entry['class'][1])
-            if item is not None:
-                comment_list.append(entry.text)
-
-    return content, comment_list
 def DrawBar(x_list, y_list, title, font):
     plt.title(title, fontproperties = font)
     plt.bar(x_list, y_list)
     plt.xticks(x_list,x_list)
     return
 
-
 if __name__ == '__main__':
 
     sum_like = [0]*5
-    # name = [0]*5
     name = ['cat','dog','mouse','bird']
     myfont = FontProperties(fname=r'C:\\python\\github\\Coding-X-rewrite\\GenYoGothicTW-Regular.ttf')
 
-    
-
-
-    for i in range(1,5):
-        title_list, href_list, like_list = Search_Board() # Search the board and get article titles and likes number of each article
+    for i in range(0,4):
+        itle_list, href_list, like_list = Search_Board() # Search the board and get article titles and likes number of each article
         sum_like[i] = sum(like_list)
         print (sum_like[i])
-
 
     ##############################################################################################################
     # Plot the like number of each article as histogram
@@ -97,36 +72,16 @@ if __name__ == '__main__':
             print('(' + str(like_list[i]) + ')', end = ' ')
             print(title_list[i], end = ' ')
             print('(' + href_list[i] + ')')
-
-
-    ##############################################################################################################
-    # Print the article with most likes
-    ##############################################################################################################
-        content, comment_list = Get_Article(href_list[0])
-        print('\n=============================================最多人按讚的文章=============================================\n')
-        print(title_list[0] + '\n')
-        print(content)
-        print('\n==================================================回應===================================================\n')
-        for i in range(len(comment_list)):
-            if i >= COMMENT_NUM:
-                break
-            print(comment_list[i] + '\n')
-            if i < COMMENT_NUM - 1:
-                print('----------------------------------------------------------------------------------------------------------\n')
-        print('=========================================================================================================')
-
         plt.show() # Show the figure
     
-    
+    # 四個板個別的總讚數
     tmp_sum_like = []
     for i in range(0,4):
         tmp_sum_like.append(sum_like[i])
 
     # 直方圖
     xlabels = name[0:4]
-    fig,ax = plt.subplots()
-    plt.bar(list(range(0,4)),tmp_sum_like)
-    plt.xticks(list(range(0,4)),xlabels)
+    plt.bar(xlabels,tmp_sum_like)
     plt.show()
 
     # 圓餅圖
