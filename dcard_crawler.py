@@ -4,12 +4,12 @@ import requests
 from matplotlib import pyplot as plt
 from matplotlib.font_manager import FontProperties
 url = "https://www.dcard.tw"
-BOARD = 'pet'
-LATEST = False
-ARTICLE_NUM = 30
-COMMENT_NUM = 3
+BOARD = 'pet'  #要爬的dcard板名稱
+LATEST = False  #True 找最新的 ， False 就沒有找最新的
+ARTICLE_NUM = 30 #搜尋文章的數量
+COMMENT_NUM = 3  #留言的數量
 key=''
-def Search_Board():
+def Search_Board(): #搜尋板內關鍵字的函式
     key = input('關鍵字')
     url_search = url + '/search?query=' + key + '&forum=' + BOARD
     print(url_search)
