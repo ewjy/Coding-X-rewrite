@@ -50,7 +50,6 @@ if __name__ == '__main__':
     for i in range(1,5):
         title_list, href_list, like_list = Search_Board() # Search the board and get article titles and likes number of each article
         sum_like[i] = sum(like_list)
-        print (sum_like[i])
 
 
     ##############################################################################################################
@@ -58,9 +57,6 @@ if __name__ == '__main__':
     ##############################################################################################################
 
         title = '每篇文章讚數'
-        print(list(range(1,ARTICLE_NUM + 1)))
-        print(like_list)
-        print(title)
         DrawBar(list(range(1,ARTICLE_NUM + 1)), like_list, title, myfont)
 
 
