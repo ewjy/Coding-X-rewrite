@@ -41,7 +41,7 @@ if __name__ == '__main__':
 
     sum_like = [0]*4
     name = ['cat','dog','mouse','bird']
-    myfont = FontProperties(fname=r'C:\\python\\github\\Coding-X-rewrite\\GenYoGothicTW-Regular.ttf')
+    myfont = FontProperties(fname=r'./GenYoGothicTW-Regular.ttf')
 
     
 
